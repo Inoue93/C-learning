@@ -1,0 +1,69 @@
+#include <iostream>
+#include <stdlib.h> // funkcja rand i srand 
+#include <time.h> // funkcja time 
+
+
+using namespace std;
+
+
+int main() {
+
+	srand(time(NULL)); //Losowanie w stosunku do czasu rzeczywistego
+
+	int Liczba2 = 0;
+	int Liczba50 = 0;
+	int Liczba364 = 0;
+	int Liczba940 = 0;
+	int Liczba555 = 0;
+	int SumaLosowan = 0;
+
+
+	int wylosowanaLiczba = (rand() % 1001); //losowanaLiczba
+
+	while (Liczba50 <2 || Liczba364  <2 || Liczba940  <2 ||Liczba2  <2 || Liczba555<2)
+	{
+		wylosowanaLiczba = (rand() % 1001);
+		cout << wylosowanaLiczba << endl;
+		SumaLosowan++;
+
+		if (wylosowanaLiczba == 50)
+		{
+			Liczba50++;
+		}
+		if (wylosowanaLiczba == 364)
+		{
+			Liczba364++;
+		}
+		if (wylosowanaLiczba == 940)
+		{
+			Liczba940++;
+		}
+		if (wylosowanaLiczba == 2)
+		{
+			Liczba2++;
+		}
+		if (wylosowanaLiczba == 555)
+		{
+			Liczba555++;
+		}
+
+	}
+
+	cout << "Wyniki:" << endl;
+	cout << "Ilość losowań:";
+	cout << SumaLosowan << endl;
+	cout << "Wylosowano:" << endl;
+	cout << "Liczba 2: ";
+	cout << Liczba2 << endl;
+	cout << "Liczba 50: ";
+	cout << Liczba50 << endl;
+	cout << "Liczba 364: ";
+	cout << Liczba364 << endl;
+	cout << "Liczba 555: ";
+	cout << Liczba555 << endl;
+	cout << "Liczba 940: ";
+	cout << Liczba940 << endl;
+
+
+
+}
