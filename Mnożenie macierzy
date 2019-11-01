@@ -1,0 +1,123 @@
+#include <iostream>
+#include <stdlib.h> // funkcja rand i srand 
+#include <time.h> // funkcja time 
+
+using namespace std;
+
+
+int main() {
+	
+	srand(time(NULL)); //Losowanie w stosunku do czasu rzeczywistego
+	
+	cout << "Wpisz liczbę rzędów macierzy A: ";
+	int rzedy;
+	cin >> rzedy;
+
+	cout << "Wpisz liczbę kolumn macierzy A: ";
+	int kolumny;
+	cin >> kolumny;
+	
+	int ** macierzA = new int * [rzedy]; //definicja wskaźnika i przydzielenie pamięci na wiersze tablicy
+	int ** macierzB = new int * [kolumny]; 
+	int ** macierzC = new int * [rzedy]; //macierz na wyniki
+  
+	
+	
+for(int i = 0; i < rzedy; i++)
+	{
+		macierzA[i] = new int[kolumny]; //Przydzielenie dla każdego wiersza ilość kolumn	
+	}
+	
+for(int x = 0; x < kolumny; x++)
+	{
+		macierzB[x] = new int[rzedy]; //Przydzielenie dla każdego wiersza ilość kolumn	(tu odwrotnie)
+	}
+	
+for(int i = 0; i < rzedy; i++)
+	{
+		macierzC[i] = new int[kolumny]; //Przydzielenie dla każdego wiersza ilość kolumn	
+	}
+
+	
+	//************* Generowanie liczb do tablicy: *****************
+	
+	cout<< "Macierz A:" <<endl;
+	for(int i=0; i<rzedy; i++)
+	{
+		for(int j=0; j<kolumny; j++)
+		{
+			//wygenerowanie liczb z zakresu [0-20] dla macierzy A
+			macierzA[i][j]=(rand() % 21);
+			//wyświetlenie wylosowanej liczby
+			cout<<macierzA[i][j]<<" "; 
+		}
+		cout<<endl;
+	}
+	 
+	 cout <<"Macierz B:"<<endl;
+	for(int x=0; x<kolumny; x++)
+	{
+		for(int y=0; y<rzedy; y++)
+		{
+			
+      //wygenerowanie liczb z zakresu [0-20] dla macierzy B
+			macierzB[x][y]= (rand() % 21);
+			//wyświetlenie wylosowanej liczby
+			cout<<macierzB[x][y]<<" "; 
+		}
+		cout<<endl;
+	}
+	
+	//************* Obliczanie macierzy  *****************
+	
+	
+
+	cout<<"Wynik mnożenia macierzy\n";    
+	for(int i=0; i<rzedy; i++)    
+		{    
+		for(int j=0; j<kolumny; j++)    
+			{
+		    for(int k=0; k<kolumny; k++)    
+				{    
+					macierzC[i][j]+=macierzA[i][k]*macierzB[k][j];    
+				}    
+			}    
+		}    
+	
+	for(int i=0; i<rzedy;i++)    
+		{    
+			for(int j=0; j<kolumny; j++)    
+				{    
+				cout<<macierzC[i][j]<<" ";    
+				}    
+			cout<<"\n";    
+		}    
+	
+	
+	//************* Zwalnianie pamięci  *****************
+	
+	for (int i = 0; i< rzedy; i++)
+	{
+		delete [] macierzA [i];
+	}
+	
+	delete [] macierzA;
+
+
+  for (int x = 0; x< kolumny; x++)
+	{
+		delete [] macierzB [x];
+	}
+	
+	delete [] macierzB;
+	
+  for (int x = 0; x< kolumny; x++)
+    {
+      delete [] macierzC [x];
+    }
+    
+    delete [] macierzC;
+    
+
+
+}
